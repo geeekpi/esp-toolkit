@@ -65,8 +65,8 @@ void app_main(void)
     register_system();
 
     printf("\n ==============================================================\n");
-    printf(" |输入help获取全部命令!                                           |\n");
-    printf(" ================================================================\n\n");
+    printf(" |                  Type \'help\' for all commands!             |\n");
+    printf(" ==============================================================\n\n");
 
     // start console REPL
     ESP_ERROR_CHECK(esp_console_start_repl(repl));
