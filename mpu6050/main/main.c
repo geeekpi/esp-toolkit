@@ -8,9 +8,9 @@
 
 typedef struct
 {
-    int16_t x;
-    int16_t y;
-    int16_t z;
+    float x;
+    float y;
+    float z;
 } Axis3i;
 
 typedef struct sensorData_s
@@ -61,12 +61,12 @@ void app_main(void)
     while (true)
     {
         vTaskDelay(100);
-        sensorData.acc.x = mpu6050GetAccelerationX();
-        sensorData.acc.y = mpu6050GetAccelerationY();
-        sensorData.acc.z = mpu6050GetAccelerationZ();
-        sensorData.gyro.x = mpu6050GetRotationX();
-        sensorData.gyro.y = mpu6050GetRotationY();
-        sensorData.gyro.z = mpu6050GetRotationZ();
-        printf("ax = %d,  ay = %d,  az = %d,  gx = %d,  gy = %d,  gz = %d\n", sensorData.acc.x, sensorData.acc.y, sensorData.acc.z, sensorData.gyro.x, sensorData.gyro.y, sensorData.gyro.z);
+        sensorData.acc.x = mpu6050GetAccelerationX() * (16.0/32768.0);
+        sensorData.acc.y = mpu6050GetAccelerationY() * (16.0/32768.0);
+        sensorData.acc.z = mpu6050GetAccelerationZ() * (16.0/32768.0);
+        sensorData.gyro.x = mpu6050GetRotationX() * (2000.0/32768.0);
+        sensorData.gyro.y = mpu6050GetRotationY() * (2000.0/32768.0);
+        sensorData.gyro.z = mpu6050GetRotationZ() * (2000.0/32768.0);
+        printf("ax = %f,  ay = %f,  az = %f,  gx = %f,  gy = %f,  gz = %f\n", sensorData.acc.x, sensorData.acc.y, sensorData.acc.z, sensorData.gyro.x, sensorData.gyro.y, sensorData.gyro.z);
     }
 }
