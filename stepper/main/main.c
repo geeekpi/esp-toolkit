@@ -28,7 +28,7 @@ void app_main(void)
 
         full_steps(&stepper0, 100, CW);
         vTaskDelay(10);
-        full_steps(&stepper0, 100, CCW);
-        vTaskDelay(10);
+        // full_steps(&stepper0, 100, CCW); // 这个是反转
+        // vTaskDelay(10);
     }
 }
